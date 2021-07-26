@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\student;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,8 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student = student::all();
-        return view('student.index', compact('student'));
+        //
     }
 
     /**
@@ -36,17 +35,27 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $student = new student();
+        $validated = $request->validate([
+            'name' => 'required',
+            'age' => 'required|integer|min:1|max:255',
+            'roll' => 'required',
+            'mobile' => 'required|integer|min:0|max:10'
+
+            
+        ]);
+
+        $student = new Student();
         $student->name = $request->name;
         $student->age = $request->age;
         $student->roll = $request->roll;
         $student->mobile = $request->mobile;
-
-        $request->session()->flash('message', 'Record Saved');
-
         $student->save();
+        $request->session()->flash('message', 'Record saved');
+        return redirect()->back(); 
 
-        return redirect()->back();
+        
+        
+
     }
 
     /**
@@ -68,8 +77,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = student::find($id);
-        return view('student.edit', compact('student'));
+        //
     }
 
     /**
@@ -81,17 +89,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $student = student::find($id);
-        $student->name = $request->name;
-        $student->age = $request->age;
-        $student->roll = $request->roll;
-        $student->mobile = $request->mobile;
-
-        $request->session()->flash('message', 'Record Updated');
-
-        $student->update();
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -102,8 +100,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $student = student::find($id);
-        $student->delete();
-        return redirect()->back();
+        //
     }
 }

@@ -9,6 +9,10 @@
 </head>
 <body>
     <div class="container">
+        @if (session('message'))
+                <div class="my-2">{{ session('message') }}</div>
+                    
+                @endif
         <form action="/employees" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">

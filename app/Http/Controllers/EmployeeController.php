@@ -49,6 +49,7 @@ class EmployeeController extends Controller
             $img = Image::make($file);
             $img->resize(100,100)->save('upload/employee/'.$filename);
             $employee->image = 'upload/employee/'.$filename;
+            $request->session()->flash('message', 'image resized');
          }
          else{
              return $request;

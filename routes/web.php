@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('app');
 });
 
-// Route::resource('students', StudentController::class);
+Route::resource('students', StudentController::class);
 
 Route::resource('employees', EmployeeController::class);
 
