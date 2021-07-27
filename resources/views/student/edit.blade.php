@@ -2,10 +2,11 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a href="/students" class="btn btn-primary btn-sm">Student Table</a>
+        <a href="/students" class="btn btn-primary btn-sm">Back</a>
     </div>
-    <form action="/students" method="post">
+    <form action="/students/{{ $student->id }}" method="post">
         @csrf
+        @method('put')
       @if (session('message'))
       <div class="my-2 alert alert-success alert-sm">
         {{ session('message') }}
@@ -13,18 +14,10 @@
           
       @endif
 
-      
-
-     
-
-
-
-       
-        
-        <div class="card-body">
+      <div class="card-body">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}">
+                <input id="name" class="form-control" type="text" name="name" value="{{ $student->name }}">
                 @error('name')
                 <span class="text-danger text-sm">{{ $message }}</span>
                     
@@ -34,8 +27,8 @@
             
             <div class="form-group">
                 <label for="age">Age</label>
-                <input id="age" class="form-control" type="text" name="age" value="{{ old('age') }}">
-                @error('age')
+                <input id="age" class="form-control" type="text" name="age" value="{{ $student->age }}">
+                @error('name')
                 <span class="text-danger text-sm">{{ $message }}</span>
                     
                 @enderror
@@ -44,7 +37,7 @@
             
             <div class="form-group">
                 <label for="roll">Roll No</label>
-                <input id="roll" class="form-control" type="text" name="roll" value="{{ old('roll') }}">
+                <input id="roll" class="form-control" type="text" name="roll" value="{{ $student->roll }}">
                 @error('roll')
                 <span class="text text-danger">{{ $message }}</span>
                     
@@ -53,7 +46,7 @@
             
             <div class="form-group">
                 <label for="mobile">Mobile</label>
-                <input id="mobile" class="form-control" type="text" name="mobile" value="{{ old('mobile') }}">
+                <input id="mobile" class="form-control" type="text" name="mobile" value="{{ $student->mobile }}">
                 @error('mobile')
                 <span class="text-danger">{{ $message }}</span>
                     

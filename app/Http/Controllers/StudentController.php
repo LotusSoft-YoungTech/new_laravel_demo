@@ -14,7 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $student = Student::all();
+        return view('student.index', compact('student'));
     }
 
     /**
@@ -37,9 +38,9 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'age' => 'required|integer|min:1|max:255',
+            'age' => 'required | numeric',
             'roll' => 'required',
-            'mobile' => 'required|integer|min:0|max:10'
+            'mobile' => 'required | numeric | min:10'
 
             
         ]);
@@ -77,7 +78,10 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        
+        $student = Student::find($id);
+        return view('student.edit', compact('student'));
     }
 
     /**
@@ -89,7 +93,14 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $student->name = $request->name;
+        $student->age = $request->age;
+        $student->roll = $request->roll;
+        $student->mobile = $request->mobile;
+        $student->update();
+        $request->session()->flash('message', 'Record updated');
+        return redirect()->back(); 
     }
 
     /**
@@ -100,6 +111,11 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+      
+        return redirect()->back(); 
+      
+       
     }
 }
