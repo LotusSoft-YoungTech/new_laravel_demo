@@ -50,6 +50,14 @@ class StudentController extends Controller
         $student->age = $request->age;
         $student->roll = $request->roll;
         $student->mobile = $request->mobile;
+
+        if($request->hasFile('photo')){
+            $fileName = $request->photo;
+            $newName = time() . $fileName->getClientOriginalName();
+            $fileName->move('student', $newName);
+            $student->photo = 'student/' . $newName;
+
+        }
         $student->save();
         $request->session()->flash('message', 'Record saved');
         return redirect()->back(); 
@@ -98,6 +106,13 @@ class StudentController extends Controller
         $student->age = $request->age;
         $student->roll = $request->roll;
         $student->mobile = $request->mobile;
+        if($request->hasFile('photo')){
+            $fileName = $request->photo;
+            $newName = time() . $fileName->getClientOriginalName();
+            $fileName->move('student', $newName);
+            $student->photo = 'student/' . $newName;
+
+        }
         $student->update();
         $request->session()->flash('message', 'Record updated');
         return redirect()->back(); 

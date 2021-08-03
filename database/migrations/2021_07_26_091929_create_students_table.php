@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->integer('age');
             $table->string('roll');
             $table->string('mobile');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
