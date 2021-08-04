@@ -233,6 +233,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
+            <a href="/galleries" class="nav-link">
+              <i class="fab fa-envira"></i>
+              <p>
+               Image Gallery
+                
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
 <a class="nav-link" href="{{ route('logout') }}"
         onclick="event.preventDefault();
         

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,8 @@ Route::get('/', function () {
 Route::resource('students', StudentController::class);
 
 Route::resource('employees', EmployeeController::class);
+
+Route::resource('galleries', GalleryController::class);
 
 
 
