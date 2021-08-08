@@ -44,9 +44,11 @@ class GalleryController extends Controller
         if($request->hasFile('images')){
             foreach($request->images as $image){
                 $galleryImage = new GalleryImage();
-                $newName = time() . $image->getClientOriginalName();
+                $newName = time() . '_'. $image->getClientOriginalName();
+                $image = GalleryImage::make($galleryImage);
                 $image->move('galleryimage', $newName);
                 $galleryImage->name = 'galleryimage/' .$newName;
+               
                 $galleryImage->gallery_id = $gallery->id;
                 $galleryImage->save();
 
@@ -76,7 +78,7 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('gallery.edit');
     }
 
     /**
@@ -99,6 +101,13 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gallery = Gallery::find($id);
+        $gallery->delete();
+
+
+        $galleryImage = GalleryImage::find($id);
+        $galleryImage->delete();
+        
+        return redirect()->back();
     }
 }

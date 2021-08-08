@@ -214,7 +214,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="/students/create" class="nav-link">
               <i class="nav-icon fas fa-plus-square"></i>
               <p>
-                Create
+                 Student Create
                 
               </p>
             </a>
@@ -226,7 +226,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="/students" class="nav-link">
               <i class="nav-icon fas fa-address-book"></i>
               <p>
-                Index
+                View Student
                 
               </p>
             </a>

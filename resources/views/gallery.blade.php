@@ -1,10 +1,10 @@
 @extends('app')
     @section('content')
     @if (session('message'))
-    <div class="my-2">{{ session('message') }}</div>
+    <div class="my-2 badge bg-info">{{ session('message') }}</div>
         
     @endif
-<form action="/employees" method="post" enctype="multipart/form-data">
+<form action="/galleris" method="post" enctype="multipart/form-data">
 @csrf
 <div class="form-group">
     <label>Name</label>

@@ -15,7 +15,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('employee');
+        return view('gallery');
     }
 
     /**
@@ -47,7 +47,7 @@ class EmployeeController extends Controller
             $filename = time() . '.' .$extension;
             // $file->move('upload/employee/', $filename);
             $img = Image::make($file);
-            $img->resize(100,100)->save('upload/employee/'.$filename);
+            $img->resize(800,600)->save('upload/employee/'.$filename);
             $employee->image = 'upload/employee/'.$filename;
             $request->session()->flash('message', 'image resized');
          }

@@ -23,9 +23,9 @@ Route::get('/', function () {
 
 Route::resource('students', StudentController::class);
 
-Route::resource('employees', EmployeeController::class);
+Route::resource('galleris', EmployeeController::class);
 
-Route::resource('galleries', GalleryController::class);
+ Route::resource('galleries', GalleryController::class);
 
 
 
@@ -40,3 +40,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
